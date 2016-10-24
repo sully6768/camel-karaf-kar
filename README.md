@@ -1,4 +1,4 @@
-Camel Router Project for Spring-DM (OSGi)
+Camel Karaf Kar Deployment Example (OSGi)
 =========================================
 
 To build this project use
