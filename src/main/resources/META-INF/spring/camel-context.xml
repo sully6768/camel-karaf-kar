@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+    xmlns="http://www.springframework.org/schema/beans"
+    xmlns:osgi="http://www.springframework.org/schema/osgi"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+                 http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                 http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd
+                 http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+    <bean
+        class="com.redhat.demo.camel.spring.dm.HelloBean"
+        id="helloBean">
+        <property
+            name="say"
+            value="Hi from Camel" />
+    </bean>
+    <camelContext
+        id="_camelContext_1"
+        xmlns="http://camel.apache.org/schema/spring">
+        <route id="_route1">
+            <from
+                id="_from1"
+                uri="timer:foo?period=5000" />
+            <setBody id="_setBody1">
+                <method
+                    method="hello"
+                    ref="helloBean" />
+            </setBody>
+            <log
+                id="_log1"
+                message="The message contains ${body}" />
+            <log
+                id="_log2"
+                message="I am the header log: ${headers}" />
+        </route>
+    </camelContext>
+</beans>
