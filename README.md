@@ -9,8 +9,15 @@ You can run this project using he following Maven goal:
 
     mvn camel:run
 
-To deploy the project in OSGi. For example using Apache ServiceMix
-or Apache Karaf, you will copy the generated KAR file under target to:
+## Deploy
+
+To deploy the KAR file project into the Karaf instance you will first need to 
+install the KAR feature:
+
+    features:install kar
+
+Once the KAR feature is installed copy the generated KAR file under 
+the projects target directory to:
 
     <KARAF/FUSE HOME>/deploy
 
